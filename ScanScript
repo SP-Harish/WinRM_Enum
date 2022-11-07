@@ -1,17 +1,27 @@
+
+$IPRange = Read-host -Prompt 'Enter the last IP address in the IP range ( if IP range is 192.168.10.0/24, last IP is 192.168.10.254)'
+
+Write-host "Scanning..." -ForegroundColor Green
+
+$sep = $IPRange.lastindexof(".")
+
 # Subnet identifier for ping sweep
-$subnet = "10.20.17"   #Enter 10.20.17.XX
+$subnet = $IPRange.substring(0,$sep)
  
 # Host IP to start ping sweep
 $start = 1
  
 # Host IP to finish ping sweep
-$end = 254
+$end = $IPRange.substring($sep+1)
  
 # Number of times to attempt each ping
 $ping = 1
  
-# Array to store Active Hosts
+#Array to store Active Hosts
 $ActiveIPs = @()
+
+#Array to Store PS remoting enabled hosts.
+$EnabledIPs = @()
 
 # Loop to check active hosts
 While ($start -le $end) {
@@ -25,7 +35,16 @@ $start++
 
 # Loop to check if powershell remoting is enabled in active hosts
 foreach ($i in $ActiveIPs) { 
+
 if (Test-WSMan $i -ErrorAction SilentlyContinue) {
-Write-host "$i"
+$EnabledIPs += $i
 }
+}
+
+# Output
+if ($EnabledIPs.count -gt 0 ) {
+Write-host "PS-Remoting Enabled on: $EnabledIPs"
+}
+Else {
+Write-host "No host found. Network is well protected. Good job Admin!"
 }
