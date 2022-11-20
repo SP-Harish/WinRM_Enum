@@ -5,7 +5,7 @@ Cyber trends tend to come and go, but one popular technique we’re seeing curre
 
 The detection and analysis of LotL being used in cyberattacks is no longer indication of an advanced threat actor group or robust malware. Nevertheless, detection and mitigation still prove to be difficult for most organizations and even security teams.
 
-The tool can be used internally to detect any misconfiguration/privileged access that had enabled powershell remoting, therby mitigating the risk of adversary's lateral movement within the network.
+This tool can be used internally to detect any misconfiguration/privileged access that had enabled powershell remoting, therby mitigating the risk of adversary's lateral movement within the network.
 
 Example:
 
