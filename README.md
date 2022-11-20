@@ -7,5 +7,7 @@ The detection and analysis of LotL being used in cyberattacks is no longer indic
 
 The tool can be used internally to detect any misconfiguration/privileged access that had enabled powershell remoting, therby mitigating the risk of adversary's lateral movement within the network.
 
+Example:
+
 ![image](https://user-images.githubusercontent.com/66154794/202881261-ff21a874-52d9-4e5c-aa1e-7d9a68f14e9a.png)
 
